@@ -17,7 +17,10 @@ const { brand, darkLight, primary } = Colors;
 // Datetimepicker
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const Signup = () => {
+//keyboard avoiding view
+import KeyboardAvoidingWrapper  from './../components/KeyboardAvoidingWrapper';
+
+const Signup = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
     const [show, setShow] = useState(false);
     const[date, setDate] = useState(new Date(2000, 0,1));
@@ -36,6 +39,7 @@ const Signup = () => {
         setShow(true);
     }
     return (
+       <KeyboardAvoidingWrapper>
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
@@ -57,6 +61,7 @@ const Signup = () => {
                     initialValues={{ fullName: '', email: '', password: '', confirmPassword: ''}}
                     onSubmit={(values) => {
                         console.log(values);
+                        navigation.navigate('Welcome');
                     }}
                 >
                     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -110,14 +115,12 @@ const Signup = () => {
                             />
                             <MsgBox>...</MsgBox>
                             <StyledButton onPress={handleSubmit}>
-                                <ButtonText>
-                                    Inicio de Session
-                                </ButtonText>
+                                <ButtonText>Inicio de Session</ButtonText>
                             </StyledButton>
                             <Line/>
                            <ExtraView>
                             <ExtraText> ¿Ya tienes una cuenta? </ExtraText>
-                            <TextLink>
+                            <TextLink onPress={() => navigation.navigate('Login')}>
                                 <TextLinkContent>Iniciar Session</TextLinkContent>
                             </TextLink>
                              </ExtraView>
@@ -126,6 +129,7 @@ const Signup = () => {
                 </Formik>
             </InnerContainer>
         </StyledContainer>
+        </KeyboardAvoidingWrapper>
     );
 };
 

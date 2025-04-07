@@ -11,12 +11,16 @@ import { Formik } from 'formik';
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import { View } from 'react-native';
 
+//keyboard avoiding view
+import KeyboardAvoidingWrapper  from './../components/KeyboardAvoidingWrapper';
+
 
 const { brand, darkLight, primary } = Colors;
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
     return (
+        <KeyboardAvoidingWrapper>
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
@@ -28,6 +32,7 @@ const Login = () => {
                     initialValues={{ email: '', password: '' }}
                     onSubmit={(values) => {
                         console.log(values);
+                        navigation.navigate("Welcome");
                     }}
                 >
                     {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -69,7 +74,7 @@ const Login = () => {
                             </StyledButton>
                            <ExtraView>
                             <ExtraText> ¿Aún no tienes una cuenta? </ExtraText>
-                            <TextLink>
+                            <TextLink onPress={() => navigation.navigate('Signup')}>
                                 <TextLinkContent>Registrarse</TextLinkContent>
                             </TextLink>
                              </ExtraView>
@@ -78,6 +83,7 @@ const Login = () => {
                 </Formik>
             </InnerContainer>
         </StyledContainer>
+        </KeyboardAvoidingWrapper>
     );
 };
 

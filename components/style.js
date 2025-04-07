@@ -20,6 +20,7 @@ const { primary, secondary, tertiary, darkLight, brand, green, red } = Colors;
 export const StyledContainer = styled.View`
   flex: 1;
   padding: 25px;
+  padding-top: ${StatusBarHeight + 30}px;
   background-color: ${primary};
 `;
 
@@ -46,7 +47,7 @@ height: 100px;
 margin: auto;
 border-radius: 50px;
 border-width: 2px;
-border-color: ${secondary}
+border-color: ${secondary};
 margin-bottom: 10px;
 margin-top: 10px;
 `;
@@ -149,7 +150,7 @@ font-size: 13px;
 
 export const Line = styled.View`
 height: 1px;
-widht: 100%;
+width: 100%;
 background-color: ${darkLight};
 margin-vertical: 10px;
 `;

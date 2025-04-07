@@ -3,10 +3,11 @@ import { StatusBar } from 'expo-status-bar';
 import {
     InnerContainer, PageTitle, SubTitle,
     StyledFormArea, StyledButton, ButtonText, Line,
-     WelcomeContainer, WelcomeImage, Avatar,
-} from '../components/style';
+    WelcomeContainer, WelcomeImage, Avatar,
+  } from '../components/style'; 
+  
 
-const Welcome = () => {
+const Welcome = ({navigation}) => {
     return (
         <>
             <StatusBar style="light"/>
@@ -20,7 +21,7 @@ const Welcome = () => {
                         <StyledFormArea>
                             <Avatar resizeMode="cover" source={require('../assets/img/logo.jpg')} />
                         <Line/> 
-                            <StyledButton onPress={() => {}}>
+                            <StyledButton onPress={() => {navigation.navigate('Login')}}>
                                 <ButtonText> Cerrar sesión </ButtonText>
                             </StyledButton>    
                         </StyledFormArea>
