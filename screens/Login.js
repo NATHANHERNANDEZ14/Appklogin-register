@@ -14,6 +14,9 @@ import { View } from 'react-native';
 //keyboard avoiding view
 import KeyboardAvoidingWrapper  from './../components/KeyboardAvoidingWrapper';
 
+// Api cliente
+import axios from 'axios';
+
 
 const { brand, darkLight, primary } = Colors;
 
