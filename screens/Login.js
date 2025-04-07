@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyledContainer, InnerContainer, PageLogo, PageTitle, SubTitle,
-     StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, Colors } from '../components/style';
+import {
+    StyledContainer, InnerContainer, PageLogo, PageTitle, SubTitle,
+    StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, Line,
+    ExtraView, ExtraText, TextLink, TextLinkContent,
+} from '../components/style';
 
-     // formik
+// formik
 import { Formik } from 'formik';
-import { Octicons, Ionicons } from '@expo/vector-icons';
+import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import { View } from 'react-native';
-import { useState as useStateDuplicate } from 'react-native'; 
 
-const { brand, darkLight } = Colors;
+
+const { brand, darkLight, primary } = Colors;
 
 const Login = () => {
     const [hidePassword, setHidePassword] = useState(true);
@@ -40,7 +43,7 @@ const Login = () => {
                                 keyboardType="email-address"
                             />
 
-<MyTextInput
+                            <MyTextInput
                                 label="Contraseña"
                                 icon="lock"
                                 placeholder="* * * * * * * * "
@@ -53,6 +56,23 @@ const Login = () => {
                                 hidePassword={hidePassword}
                                 setHidePassword={setHidePassword}
                             />
+                            <MsgBox>...</MsgBox>
+                            <StyledButton onPress={handleSubmit}>
+                                <ButtonText>
+                                    Inicio de Session
+                                </ButtonText>
+                            </StyledButton>
+                            <Line/>
+                            <StyledButton google={true} onPress={handleSubmit}>
+                                <Fontisto name="google" color={primary} size={25}/>
+                                <ButtonText google={true} > Iniciar sesión con Google </ButtonText>
+                            </StyledButton>
+                           <ExtraView>
+                            <ExtraText> ¿Aún no tienes una cuenta? </ExtraText>
+                            <TextLink>
+                                <TextLinkContent>Registrarse</TextLinkContent>
+                            </TextLink>
+                             </ExtraView>
                         </StyledFormArea>
                     )}
                 </Formik>
@@ -72,7 +92,7 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
             <StyledTextInput {...props} />
             {isPassword && (
                 <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-             <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} size={30} color={darkLight}/>
+                    <Ionicons name={hidePassword ? 'eye-off' : 'eye'} size={30} color={darkLight}/>
                 </RightIcon>
             )}
         </View>
